@@ -1,0 +1,44 @@
+dataset_name: flora-v1
+seed: 61
+out_dir: data-gen/outputs
+print_every: 100
+num_workers: 64
+
+algorithm: flora
+gen_params:
+  grid_size: 20
+  density_dist:
+    dist_type: uniform
+    dist_params:
+      low: 0.55
+      high: 0.75
+  neighbors_dist:
+    dist_type: hierarchical_normal
+    dist_params:
+      loc_dist:
+        dist_type: uniform
+        dist_params:
+          low: 3.0
+          high: 7.0
+      scale_dist:
+        dist_type: uniform
+        dist_params:
+          low: 8.0
+          high: 12.0
+  connectivity_dist:
+    dist_type: hierarchical_normal
+    dist_params:
+      loc_dist:
+        dist_type: uniform
+        dist_params:
+          low: 2.0
+          high: 3.0
+      scale_dist:
+        dist_type: uniform
+        dist_params:
+          low: 3.0
+          high: 7.0
+  
+logger:
+  filter: .*
+  wandb: false

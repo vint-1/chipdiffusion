@@ -1,0 +1,10 @@
+backbone: graph_unet
+backbone_params:
+  edge_features: 4
+  cond_node_features: 2
+  hidden_node_features: [32, 64, 128, 256]
+  blocks_per_level: [2, 2, 2, 2]
+  layers_per_block: 2
+  residual: True
+  norm: True
+  dropout: 0.0

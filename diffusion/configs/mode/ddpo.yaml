@@ -1,0 +1,11 @@
+mode: ddpo
+batch_size: 4
+train_steps: 100000
+print_every: 200
+eval_every: 5000
+val_batch_size: 64 
+lr: 1e-4
+ddpo:
+  legality_weight: 0.0
+  hpwl_weight: 1.0
+  ema_factor: 0.999

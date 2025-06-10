@@ -1,0 +1,17 @@
+backbone: att_gnn
+backbone_params:
+  edge_features: 4
+  cond_node_features: 2
+  hidden_size: 128 
+  hidden_node_features: [256, 256] 
+  attention_node_features: [32, 32]
+  layers_per_block: 2 
+  input_encoding_dim: 32
+  dropout: 0.0
+  num_heads: 4
+  mlp_num_layers: 2
+  mlp_size_factor: 4
+  ff_num_layers: 2
+  ff_size_factor: 1
+  att_implementation: flash # NOTE flash requires sm_80 or sm_90. will fallback to mem efficient att
+  dir_att_input: True

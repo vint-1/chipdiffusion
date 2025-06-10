@@ -1,0 +1,8 @@
+backbone: mlp
+backbone_params:
+  num_layers: 6
+  model_width: 4096
+  in_size: 1 # dummy
+  out_size: 1 # dummy
+  encoding_type: "sinusoid"
+  encoding_dim: 64

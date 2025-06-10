@@ -1,0 +1,83 @@
+defaults:
+  - _self_
+  - model: att-gnn #graph-transformer
+  - model/conv-layer@model.backbone_params: gat
+  - model/size@model.backbone_params: large
+  - guidance@_here_: opt
+  - legalizer@_here_: standard
+  - sc_placer@_here_: sgd
+  - override hydra/hydra_logging: none
+  - override hydra/job_logging: stdout
+
+family: continuous_diffusion
+task: placement-mini-v5
+num_classes: 10
+method: debug_att_gnn
+seed: 300
+log_dir: logs/diffusion_debug
+from_checkpoint: none
+param_sweep: False # set to true when using with wandb sweeps, to ignore run names
+
+logger:
+  filter: '.*'
+  wandb: True
+  wandb_entity: <your name here>
+  wandb_project: <your project here>
+
+# model params
+implementation: custom
+model:
+  mask_key: is_ports
+  use_mask_as_input: True
+  max_diffusion_steps: 1000
+  noise_schedule: cosine
+  t_encoding_type: sinusoid
+  t_encoding_dim: 32
+  beta_1: 1e-4
+  beta_T: 0.02
+
+# clustering params
+cluster:
+  is_cluster: False
+  num_clusters: 512
+  verbose: False
+  cached_clusters: False # set to true if input dataset is already clustered
+
+# legalization
+legalization:
+  mode: none
+  softmax_min: 5.0
+  softmax_max: 50.0
+
+# eval params
+val_batch_size: 64
+sc_halo: 1.0 # resize SC clusters
+macros_only: False
+cached_macros: False
+eval_samples: 0
+eval_policy_algorithm: open_loop
+eval_policy:
+  num_iterations: 5
+  num_clusters: 512
+  sc_placement_algorithm: none # specify using sc_placer
+  verbose: False
+  save_plots: False
+  save_videos: False
+edge_dropout: 0
+
+# scatter plots
+scatter_plots:
+  - [lambda_2, legality_2]
+  - [lambda_2, hpwl_ratio]
+  - [hpwl_ratio, legality_2]
+  - [original_hpwl_normalized, hpwl_normalized]
+
+show_intermediate_every: 200
+num_output_samples: 18
+train_data_limit: none
+val_data_limit: none
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .

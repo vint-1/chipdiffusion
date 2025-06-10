@@ -1,0 +1,53 @@
+dataset_name: v2
+seed: 61
+out_dir: data-gen/outputs
+print_every: 100
+num_workers: 64
+
+algorithm: v2
+gen_params:
+  max_instance: 1600 # x4
+  stop_density_dist:
+    dist_type: uniform
+    dist_params:
+      low: 0.75
+      high: 0.9
+  max_attempts_per_instance: 10
+  aspect_ratio_dist:
+    dist_type: uniform
+    dist_params:
+      low: 0.25
+      high: 1.0
+  instance_size_dist:
+    dist_type: clipped_exp
+    dist_params:
+      scale: 0.04 # 1/2
+      clip_min: 0.01 # 1/2
+      clip_max: 0.5 # 1/2
+  num_terminals_dist:
+    dist_type: cond_binomial
+    dist_params:
+      binom_p: 0.5
+      binom_min_n: 4
+      t: 315 # x(4**0.65)
+      p: 0.65
+  edge_dist:
+    dist_type: cond_exp_hierarchical_bernoulli
+    dist_params:
+      global_scale: True
+      scale_dist:
+        dist_type: log_uniform
+        dist_params: 
+          low: 0.025 # 1/2
+          high: 0.8 # 1/2
+      prob_clip: 0.9
+      prob_multiplier_factor: 0.00792 # x(2 ** -1.42)
+      prob_multiplier_exp: -1.42
+  source_terminal_dist:
+    dist_type: bernoulli
+    dist_params:
+      probs: 0.3
+
+logger:
+  filter: .*
+  wandb: false

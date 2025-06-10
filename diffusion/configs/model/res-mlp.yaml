@@ -1,0 +1,7 @@
+backbone: res_mlp
+backbone_params:
+  num_blocks: 3
+  layers_per_block: 4
+  model_width: 4096
+  encoding_type: "sinusoid"
+  encoding_dim: 64

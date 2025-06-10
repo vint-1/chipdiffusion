@@ -1,0 +1,8 @@
+conv_params:
+  layer_type: custom_transformer
+  heads: 4
+  root_weight: True
+  concat: True
+  edge_mlp_size_factor: 1
+  edge_mlp_layers: 1
+  

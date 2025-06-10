@@ -1,0 +1,4 @@
+conv_params:
+  layer_type: gat
+  heads: 4
+  concat: True

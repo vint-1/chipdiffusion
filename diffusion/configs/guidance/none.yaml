@@ -1,0 +1,8 @@
+model:
+  guidance_mode: none
+  legality_guidance_weight: 0.0
+  hpwl_guidance_weight: 0.0
+  guidance_step: 0
+  forward_guidance_weight: 0.0
+  grad_descent_steps: 0
+  

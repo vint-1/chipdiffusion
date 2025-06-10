@@ -1,0 +1,13 @@
+legalization:
+  mode: scheduled
+  softmax_min: 5.0
+  softmax_max: 50.0
+  step_size: 0.2
+  grad_descent_steps: 5000
+  save_videos: False
+  legality_weight: 2.0
+  hpwl_weight: 4e-5
+  softmax_critical_factor: 0.75
+  guidance_critical_factor: 0.75
+  zero_hpwl_factor: 0.9
+  legality_increase_factor: 2.0

@@ -1,0 +1,4 @@
+mode: finetune
+train_steps: 500000
+print_every: 5000
+eval_every: 25000

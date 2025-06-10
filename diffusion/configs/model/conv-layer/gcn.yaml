@@ -1,0 +1,2 @@
+conv_params:
+  layer_type: gcn

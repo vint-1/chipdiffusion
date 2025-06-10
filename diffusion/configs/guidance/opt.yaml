@@ -1,0 +1,15 @@
+model:
+  guidance_mode: opt
+  guidance_step: 1000
+  forward_guidance_weight: 0.0 # For balancing forward and backward guidance
+  grad_descent_rate: 8e-3 # formerly step size
+  grad_descent_steps: 10 # gradient steps per diffusion step, denoted m in universal guidance
+  hpwl_guidance_weight: 1e-4
+  alpha_init: 0.0
+  alpha_lr: 5e-4 # 1e-3
+  alpha_critical_factor: 0.5 # point beyond which alpha can increase, use 1.0 for full alpha
+  legality_potential_target: 1e-4
+  use_adam: True
+  legality_softmax_factor_min: 10.0
+  legality_softmax_factor_max: 20.0
+  legality_softmax_critical_factor: 0.1  # for scheduling softmax factor

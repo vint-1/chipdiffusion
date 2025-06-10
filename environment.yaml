@@ -1,0 +1,25 @@
+name: chipdiffusion
+channels:
+  - defaults
+dependencies:
+  - python=3.10.4
+  - cudatoolkit
+  - pip
+  - pip:
+    - numpy==1.23.5
+    - torch==2.2.1
+    - torchvision==0.17.1
+    - termcolor
+    - omegaconf
+    - wandb==0.13.10
+    - moviepy==1.0.3
+    - imageio
+    - ipdb
+    - matplotlib
+    - hydra-core
+    - rich
+    - torch-geometric==2.4.0
+    - performer-pytorch
+    - shapely
+    - plotly
+    - scikit-learn

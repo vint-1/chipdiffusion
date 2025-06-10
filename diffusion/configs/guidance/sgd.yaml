@@ -1,0 +1,12 @@
+model:
+  guidance_mode: sgd
+  legality_guidance_weight: 3.0
+  hpwl_guidance_weight: 4e-5
+  guidance_step: 1000
+  forward_guidance_weight: 0.0 # For balancing forward and backward guidance
+  grad_descent_steps: 10 # denoted m in universal guidance paper
+  grad_descent_rate: 0.5
+  self_recursion_steps: 10
+  legality_softmax_factor_min: 10.0
+  legality_softmax_factor_max: 10.0
+  legality_softmax_critical_factor: 0.0  # for scheduling softmax factor

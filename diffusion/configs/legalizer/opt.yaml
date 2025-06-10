@@ -1,0 +1,14 @@
+legalization:
+  mode: opt
+  softmax_min: 5.0
+  softmax_max: 50.0
+  step_size: 0.2 # 0.05
+  grad_descent_steps: 5000
+  save_videos: False
+  save_timeseries: False
+  softmax_critical_factor: 1.0
+  hpwl_weight: 0.0
+  alpha_init: 1.0
+  alpha_lr: 5e-2
+  legality_potential_target: 1e-4
+  use_adam: False

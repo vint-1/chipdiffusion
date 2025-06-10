@@ -1,0 +1,12 @@
+__pycache__
+.DS_Store
+.vscode
+datasets/*
+wandb/
+logs/
+venv/
+debug/
+data-gen/outputs/
+shmetis
+hmetis
+benchmarks/

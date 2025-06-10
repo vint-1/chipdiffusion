@@ -1,0 +1,12 @@
+backbone: unet
+backbone_params:
+  level_block: res
+  in_channels: 3
+  out_channels: 3
+  cnn_depths: [256, 512, 1024, 2048]
+  layers_per_block: 3
+  filter_size: 3
+  pooling_factor: 2
+  residual: True
+  dropout: 0.0
+  norm: True

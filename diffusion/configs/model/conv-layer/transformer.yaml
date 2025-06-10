@@ -1,0 +1,6 @@
+conv_params:
+  layer_type: transformer
+  heads: 4
+  root_weight: True
+  concat: True
+  

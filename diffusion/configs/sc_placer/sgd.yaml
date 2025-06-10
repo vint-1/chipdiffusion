@@ -1,0 +1,9 @@
+eval_policy:
+  sc_placement_algorithm: sgd
+  sc_placement_params:
+    lr: 2e-2 # 0.2
+    grad_descent_steps: 128 # 1024
+    legality_guidance_weight: 0.0 # 1.0
+    hpwl_guidance_weight: 1.0 # 0.00002
+    softmax_min: 5.0
+    softmax_max: 50.0

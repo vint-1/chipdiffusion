@@ -1,0 +1,13 @@
+eval_policy:
+  sc_placement_algorithm: adam
+  sc_placement_params:
+    step_size: 2e-3 # 2e-3 # 3e-3
+    grad_descent_steps: 5000 # 5000 # 1000
+    softmax_min: 5.0
+    softmax_max: 50.0
+    softmax_critical_factor: 0.1 # 0.1 # 0.2
+    hpwl_weight: 1e-5
+    alpha_init: 1.0 # 1.0 # 2.0
+    alpha_lr: 1e-3 # 1e-3 # 3e-3
+    legality_potential_target: 1e-4
+    use_adam: True

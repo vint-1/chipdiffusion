@@ -1,0 +1,79 @@
+program: diffusion/eval.py
+method: random
+entity: <your name here>
+project: <your project here>
+name: sweep-ibm
+run_cap: 500
+metric:
+  name: sweep/cost
+  goal: minimize
+parameters:
+  model.hpwl_guidance_weight:
+    distribution: log_uniform_values
+    min: 1e-6
+    max: 1e-3
+  model.grad_descent_rate:
+    distribution: log_uniform_values
+    min: 8e-5
+    max: 8e-1
+  model.alpha_init:
+    distribution: uniform
+    min: 0.0
+    max: 2.0
+  model.alpha_lr:
+    distribution: log_uniform_values
+    min: 5e-6
+    max: 5e-2
+  model.alpha_critical_factor:
+    distribution: uniform
+    min: 0.0
+    max: 0.9
+  model.legality_potential_target:
+    distribution: uniform
+    min: 0.0
+    max: 1e-2
+  model.legality_softmax_factor_min:
+    distribution: uniform
+    min: 5.0
+    max: 20.0
+  model.legality_softmax_factor_max:
+    distribution: uniform
+    min: 10.0
+    max: 40.0
+  model.legality_softmax_critical_factor:
+    distribution: uniform
+    min: 0.05
+    max: 0.9
+  legalization.softmax_min:
+    distribution: uniform
+    min: 5.0
+    max: 20.0
+  legalization.softmax_max:
+    distribution: uniform
+    min: 20.0
+    max: 100.0
+  legalization.softmax_critical_factor:
+    distribution: uniform
+    min: 0.5
+    max: 1.0
+
+command:
+  - ${env}
+  - PYTHONPATH=.
+  - python
+  - ${program}
+  - method=sweep
+  - log_dir=logs/sweep
+  - param_sweep=True
+  - task=ibm-cluster512
+  - num_output_samples=18
+  - from_checkpoint=v2_gmix1.6_2x.61.finetune_v2_gmix1.6_3M_cont_256_B3_b32_lr1e-4.91/step_250000.ckpt
+  - model.backbone_params.hidden_size=256 
+  - model.backbone_params.attention_node_features=[256,256,256]
+  - model.backbone_params.hidden_node_features=[256,256,256]
+  - model.noise_schedule=cosine
+  - model.max_diffusion_steps=1000
+  - family=continuous_diffusion
+  - legalizer@_global_=standard
+  - guidance@_global_=opt
+  - ${args_no_hyphens}

@@ -1,0 +1,12 @@
+backbone: res_gnn
+backbone_params:
+  edge_features: 4
+  cond_node_features: 2
+  hidden_size: 2 # 8
+  hidden_node_features: [256] #[64, 128, 128, 64]
+  layers_per_block: 4 # 4
+  dropout: 0.0
+  block_type: att
+  num_heads: 4
+  ff_num_layers: 2
+  ff_size_factor: 1

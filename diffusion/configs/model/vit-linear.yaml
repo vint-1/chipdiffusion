@@ -1,0 +1,11 @@
+backbone: vit
+backbone_params:
+  num_heads: 12 # 6
+  num_layers: 6 # 4
+  ff_num_layers: 2
+  ff_size_factor: 4
+  model_dim: 768 # 384
+  patches_a_side: 8 # 16
+  dropout: 0.1 # paper suggests 0.1
+  pos_encoding_type: "learned"
+  mode: "linear_autoencoder"

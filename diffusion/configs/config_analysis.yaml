@@ -1,0 +1,61 @@
+defaults:
+  - _self_
+  - task_config@_here_: synth-v2
+  - override hydra/hydra_logging: none
+  - override hydra/job_logging: stdout
+
+task: placement-mini-v5
+num_classes: 10
+method: debug_att_gnn
+seed: 61
+log_dir: logs/dataset_analysis
+from_checkpoint: none
+
+logger:
+  filter: '.*'
+  wandb: True
+  wandb_entity: <your name here>
+  wandb_project: <your project here>
+
+# model params
+implementation: custom
+model:
+  mask_key: is_ports
+  use_mask_as_input: True
+  max_diffusion_steps: 1000
+  noise_schedule: linear
+  t_encoding_type: sinusoid
+  t_encoding_dim: 32
+  beta_1: 1e-4
+  beta_T: 0.02
+  legality_guidance_weight: 4.0
+  hpwl_guidance_weight: 0.008
+  guidance_step: 1000 # 901 201
+
+# clustering params
+cluster:
+  is_cluster: False
+  num_clusters: 512
+  verbose: False
+
+# eval params
+print_every: 5000
+val_batch_size: 64
+eval_samples: 32
+image_limit: 0 # 128
+table_limit: 128
+show_edges: False
+eval_policy: open_loop
+show_intermediate_every: 0
+num_output_samples: 0
+train_data_limit: none
+val_data_limit: none
+
+# scatter plots
+scatter_plots:
+  - [lambda_2, mean_edge_length]
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .

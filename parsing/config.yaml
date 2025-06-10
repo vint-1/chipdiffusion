@@ -1,0 +1,22 @@
+defaults:
+  - _self_
+  - override hydra/hydra_logging: none
+  - override hydra/job_logging: stdout
+
+benchmark_dir: benchmarks/ibm
+out_dir: benchmarks
+pickle_out_dir: datasets/clustered
+placement_dir: null
+name: test
+mode: remove_first
+cluster_algorithm: hmetis
+limit: -1
+num_clusters: 512
+ubfactor: 5
+use_placed_def: True
+verbose: False
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .

@@ -1,0 +1,12 @@
+backbone: graph_transformer
+backbone_params:
+  num_heads: 4
+  model_dim: 128
+  num_layers: 4
+  pos_encoding_dim: 16
+  ff_num_layers: 2
+  ff_size_factor: 4
+  dropout: 0.0
+  edge_features: 4
+  residual: False
+  

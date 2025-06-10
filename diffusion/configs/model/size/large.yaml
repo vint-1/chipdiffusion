@@ -1,0 +1,3 @@
+hidden_size: 256
+hidden_node_features: [256, 256, 256]
+attention_node_features: [256, 256, 256]

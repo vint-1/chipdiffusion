@@ -1,0 +1,3 @@
+conv_params:
+  layer_type: gin
+  nn_num_layer: 2

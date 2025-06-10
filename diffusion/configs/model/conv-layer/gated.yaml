@@ -1,0 +1,5 @@
+conv_params:
+  layer_type: gated
+  num_layers: 2
+  aggr: add
+  
