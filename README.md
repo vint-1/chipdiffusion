@@ -15,7 +15,7 @@ conda activate chipdiffusion
 
 Training and evaluation experiments will log data to Weights & Biases by default. Set your name and W&B project in the [config](diffusion/configs) files using the `logger.wandb_entity` and `logger.wandb_project` options before running the commands below. Turn off W&B logging by appending `logger.wandb=False` to the commands below.
 
-For running evaluations that require clustering, download [shmetis](http://glaros.dtc.umn.edu/gkhome/metis/hmetis/overview) and place in the repo's root directory.
+For running evaluations that require clustering, download [shmetis](http://glaros.dtc.umn.edu/gkhome/metis/hmetis/overview) and [hmetis](http://glaros.dtc.umn.edu/gkhome/metis/hmetis/overview), then place them in the repo's root directory. You may have to run `chmod +x` to allow the programs to run.
 
 
 ## Directory Structure
