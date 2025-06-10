@@ -1,7 +1,5 @@
 # Helper functions for working with orientable (rotate + flip) macros
-# TODO For guidance to work, we need to_fixed to be differentiable (only this fn is needed for guidance)
-# NOTE Because we only require to_fixed to be defined on discrete bits, there are lots of ways to interpolate in a differentiable way...
-# NOTE So we probably have to come up with something clever
+# Not used in experiments shown in paper
 
 import torch
 from torch_geometric.data import Data

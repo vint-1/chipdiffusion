@@ -740,7 +740,7 @@ class SelfCondDiffusionModel(nn.Module):
         # don't perturb things covered by mask
         x_t = torch.where(mask, x, x_perturbed) if mask is not None else x_perturbed
         
-        # self-conditioning TODO check for edge cases in terms of t?
+        # self-conditioning
         null_condition = torch.zeros_like(x_t)
         x_input = torch.concat((x_t, null_condition), dim = -1)
         model_output = self(x_input, cond, t)
@@ -849,7 +849,7 @@ class SelfCondDiffusionModel(nn.Module):
 
     def get_mask(self, x, cond):
         if self.modality == "graph":
-            if self.mask_key and self.mask_key in cond: # TODO raise error if mask key unexpectedly missing
+            if self.mask_key and self.mask_key in cond: 
                 mask = cond[self.mask_key]
                 B, V, F = x.shape
                 mask = mask.view(1, V, 1)
@@ -1247,7 +1247,6 @@ class ChipDiffusionModel(MixedDiffusionModel):
         return output_samples, intermediates
 
 class NoModel(GuidedDiffusionModel):
-    # TODO make this completely independent of guidedDiffusionModel so we can do custom SGD things
     def __init__(
             self,
             **kwargs
@@ -1450,7 +1449,7 @@ class ContinuousDiffusionModel(nn.Module):
         return x, intermediates
     
     def get_mask(self, x, cond):
-        if self.mask_key and self.mask_key in cond: # TODO raise error if mask key unexpectedly missing
+        if self.mask_key and self.mask_key in cond:
             mask = cond[self.mask_key]
             B, V, F = x.shape
             mask = mask.view(1, V, 1)
@@ -1485,7 +1484,7 @@ class ContinuousDiffusionModel(nn.Module):
         # compute backward guidance on x_hat
         x_hat_current = x_hat.detach().clone().requires_grad_(True)
         optimizer = torch.optim.SGD((x_hat_current,), lr=self.grad_descent_rate, momentum=0.0)
-        # m step gradient descent TODO stop movements of objects that should be masked out
+        # m step gradient descent
         for _ in range(self.grad_descent_steps):
             optimizer.zero_grad()
             h_legality = self.legality_guidance_weight * guidance.legality_guidance_potential(x_hat_current, cond, mask=mask, softmax_factor=legality_softmax_factor)

@@ -35,7 +35,7 @@ def cost(output_metrics):
 
 @hydra.main(version_base=None, config_path="configs", config_name="config_eval")
 def main(cfg):
-    # Preliminaries TODO save to proper directory if sweep mode
+    # Preliminaries
     OmegaConf.set_struct(cfg, True)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     torch.manual_seed(cfg.seed)

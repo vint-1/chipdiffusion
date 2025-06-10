@@ -1,6 +1,3 @@
-# TODO:
-# make into a nice class interface
-# refactor utils so that policies control how logging takes place
 import torch
 import numpy as np
 import time
