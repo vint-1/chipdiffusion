@@ -1,4 +1,4 @@
-# Chip Placement Using Diffusion Models
+# Chip Placement with Diffusion Models
 
 Vint Lee, Minh Nguyen, Leena Elzeiny, Chun Deng, Pieter Abbeel, John Wawrzynek
 
